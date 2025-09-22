@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef, PLATFORM_ID, inject, viewChild } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, PLATFORM_ID, inject, viewChild, OnInit } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { PageMeta } from '../../models/meta.model';
 import { SeoService } from '../../services/seo.service';
@@ -8,10 +8,10 @@ import { SeoService } from '../../services/seo.service';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
-export class AboutComponent implements AfterViewInit {
+export class AboutComponent implements AfterViewInit, OnInit {
   private seoService = inject(SeoService);
 
-  private platformId = inject<Object>(PLATFORM_ID);
+  private platformId = inject<object>(PLATFORM_ID);
 
   readonly slider = viewChild.required<ElementRef<HTMLElement>>('slider');
   readonly prevSlideBtn = viewChild.required<ElementRef<HTMLButtonElement>>('prevSlideBtn');

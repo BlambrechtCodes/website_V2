@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { PageMeta } from '../../models/meta.model';
 import { SeoService } from '../../services/seo.service';
 
@@ -7,7 +7,7 @@ import { SeoService } from '../../services/seo.service';
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss']
 })
-export class GalleryComponent {
+export class GalleryComponent implements OnInit {
   private seoService = inject(SeoService);
 
   selectedImage: any = null;
