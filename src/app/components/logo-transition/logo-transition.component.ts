@@ -4,8 +4,7 @@ import { gsap } from 'gsap';
 @Component({
   selector: 'app-logo-transition',
   templateUrl: './logo-transition.component.html',
-  styleUrl: './logo-transition.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './logo-transition.component.scss'
 })
 export class LogoTransitionComponent implements AfterViewInit {
   private readonly renderer = inject(Renderer2);
