@@ -1,5 +1,5 @@
 // opportunities.component.ts
-import { Component, AfterViewInit, OnDestroy, ViewChildren, QueryList, ElementRef, inject } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, ViewChildren, QueryList, ElementRef, inject, OnInit } from '@angular/core';
 import { PageMeta } from '../../models/meta.model';
 import { SeoService } from '../../services/seo.service';
 
@@ -151,7 +151,7 @@ class CardCarousel extends DraggingEvent {
   private cards: NodeListOf<HTMLElement>;
 
   private centerIndex: number;
-  private cardWidth: number = 30;
+  private cardWidth = 30;
   private xScale: Record<number, HTMLElement> = {}; // Maps logical index (e.g., -2, -1, 0, 1, 2) to card element
 
   private resizeListener: () => void;
@@ -461,7 +461,7 @@ class CardCarousel extends DraggingEvent {
   templateUrl: './opportunities.component.html',
   styleUrls: ['./opportunities.component.scss']
 })
-export class OpportunitiesComponent implements AfterViewInit, OnDestroy {
+export class OpportunitiesComponent implements AfterViewInit, OnDestroy, OnInit {
   private seoService = inject(SeoService);
 
   ngOnInit(): void {

@@ -18,7 +18,7 @@ import { gsap } from 'gsap';
 })
 export class AppComponent implements OnInit, OnDestroy {
     private router = inject(Router);
-    private platformId = inject<Object>(PLATFORM_ID);
+    private platformId = inject<object>(PLATFORM_ID);
     private pageTransitionService = inject(PageTransitionService);
 
     readonly logoTransition = viewChild.required(LogoTransitionComponent);
@@ -27,8 +27,8 @@ export class AppComponent implements OnInit, OnDestroy {
     title = 'CODERS Website';
     private routerEventsSubscription: Subscription | null = null;
     private isBrowserNavigating = false;
-    showLogoTransition: boolean = false;
-    private initialTransitionComplete: boolean = false;
+    showLogoTransition = false;
+    private initialTransitionComplete = false;
 
     // Track the current transition timeout and listener for cleanup
     private transitionTimeout: any = null;

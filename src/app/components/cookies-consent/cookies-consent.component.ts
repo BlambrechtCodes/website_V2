@@ -7,7 +7,7 @@ import { isPlatformBrowser } from '@angular/common';
   styleUrls: ['./cookies-consent.component.scss']
 })
 export class CookiesConsentComponent {
-  private platformId = inject<Object>(PLATFORM_ID);
+  private platformId = inject<object>(PLATFORM_ID);
 
   isConsentGiven = false;
   showConsent = false;
