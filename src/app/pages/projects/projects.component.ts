@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CarouselComponent } from '../../components/carousel/carousel.component';
 import { Project } from '../../models/project.model';
 import { SeoService } from '../../services/seo.service';
@@ -10,7 +10,7 @@ import { PageMeta } from '../../models/meta.model';
     templateUrl: './projects.component.html',
     styleUrl: './projects.component.scss'
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements OnInit {
     private seoService = inject(SeoService);
 
     ngOnInit(): void {

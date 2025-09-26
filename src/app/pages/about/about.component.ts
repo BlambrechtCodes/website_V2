@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef, PLATFORM_ID, inject, viewChild } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, PLATFORM_ID, inject, viewChild, OnInit } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { PageMeta } from '../../models/meta.model';
 import { SeoService } from '../../services/seo.service';
@@ -8,10 +8,9 @@ import { SeoService } from '../../services/seo.service';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
-export class AboutComponent implements AfterViewInit {
+export class AboutComponent implements AfterViewInit, OnInit {
   private seoService = inject(SeoService);
-
-  private platformId = inject<Object>(PLATFORM_ID);
+  private platformId = inject<object>(PLATFORM_ID);
 
   readonly slider = viewChild.required<ElementRef<HTMLElement>>('slider');
   readonly prevSlideBtn = viewChild.required<ElementRef<HTMLButtonElement>>('prevSlideBtn');
@@ -19,7 +18,7 @@ export class AboutComponent implements AfterViewInit {
   readonly sliderDots = viewChild.required<ElementRef<HTMLElement>>('sliderDots');
 
   private currentSlide = 0;
-  private slideInterval: any;
+  private slideInterval: ReturnType<typeof setInterval> | undefined;
 
   ngOnInit(): void {
     const pageMeta: PageMeta = {
@@ -53,10 +52,6 @@ export class AboutComponent implements AfterViewInit {
 
       this.createDots(totalSlides, dotsContainer);
       this.updateSlider();
-
-      // Remove these lines:
-      // nextSlide.addEventListener('click', () => this.nextSlide());
-      // prevSlide.addEventListener('click', () => this.prevSlide());
 
       this.startAutoSlide();
 
@@ -117,7 +112,6 @@ export class AboutComponent implements AfterViewInit {
     }
   }
 
-
   goToSlide(index: number): void {
     this.currentSlide = index;
     this.updateSlider();
@@ -130,8 +124,9 @@ export class AboutComponent implements AfterViewInit {
   }
 
   private pauseAutoSlide(): void {
-    if (isPlatformBrowser(this.platformId)) {
+    if (isPlatformBrowser(this.platformId) && this.slideInterval !== undefined) {
       clearInterval(this.slideInterval);
+      this.slideInterval = undefined;
     }
   }
 
