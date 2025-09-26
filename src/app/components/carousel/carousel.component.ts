@@ -13,8 +13,7 @@ interface ResponsiveOption {
   selector: 'app-carousel',
   imports: [CarouselModule, ButtonModule, TagModule],
   templateUrl: './carousel.component.html',
-  styleUrl: './carousel.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './carousel.component.scss'
 })
 export class CarouselComponent {
   readonly items = input<object[]>([]);
