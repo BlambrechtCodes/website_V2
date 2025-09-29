@@ -291,7 +291,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     {
       name: 'Muhammad Fardeen',
       image: 'https://media.licdn.com/dms/image/v2/D4D03AQG3tlbwKzghRg/profile-displayphoto-shrink_400_400/B4DZVQZak0G8Ag-/0/1740810595075?e=1761782400&v=beta&t=QQHIkNn7uyBbi0JHVniFB0fFp9i9KJ0EUY_N3o9WtD8',
-      role: 'Web Development Chair'
+      role: 'Website Development Chair'
     }
   ];
 
